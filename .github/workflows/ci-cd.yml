@@ -2,7 +2,7 @@ name: Déploiement statique du site web sur GitHub Pages
 
 on:
   push:
-    branches: ["master"]
+    branches: ["main"]
 
   workflow_dispatch:
 
