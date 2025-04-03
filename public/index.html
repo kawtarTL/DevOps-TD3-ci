@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page de Démo</title>
+</head>
+<body>
+  <h1>Bienvenue sur ma page GitHub Pages !</h1>
+  <p id="message">Ceci est une démo de GitHub Pages avec Node.js et JavaScript.</p>
+  <button id="changeMessageBtn">Change Message</button>
+
+  <script>
+    document.getElementById("changeMessageBtn").addEventListener("click", function() {
+      document.getElementById("message").textContent = "Le message a été changé grâce à JavaScript!";
+    });
+  </script>
+</body>
+</html>
