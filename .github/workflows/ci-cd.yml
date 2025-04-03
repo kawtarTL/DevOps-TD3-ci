@@ -39,7 +39,6 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          github_token: ${{ secrets.GH_TOKEN }}
-          folder: ./public # Remplacez ce chemin par celui où se trouve votre page HTML à déployer
-          branch: gh-pages  # Branche sur laquelle déployer (gh-pages est la branche standard pour GitHub Pages)
+          folder: ./public 
+          branch: gh-pages  
           commit-message: "Deploying to GitHub Pages"
