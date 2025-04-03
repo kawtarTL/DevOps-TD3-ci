@@ -1,4 +1,4 @@
-name: CI/CD Pipeline Node.js
+name: CI/CD Pipeline node.js
 
 on:
   push:
@@ -15,7 +15,7 @@ jobs:
     strategy:
       matrix:
         node-version: [18.x, 20.x, 22.x]
-
+        
     steps:
       - uses: actions/checkout@v4
       - name: Use Node.js ${{ matrix.node-version }}
@@ -31,25 +31,15 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: build
-    if: success()
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-      # Installer Node.js et configurer
-      - name: Use Node.js 16.x (ou une version spécifique pour le déploiement)
-        uses: actions/setup-node@v4
-        with:
-          node-version: '16.x'
-
-      # Installer les dépendances de production
-      - run: npm install --only=production
-
-      # Construire le projet (si nécessaire)
-      - run: npm run build --if-present
-
-      # Déployer sur GitHub Pages
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          publish_dir: ./public  # Changez cela si votre fichier index.html est dans un autre dossier, ex. ./build
+          github_token: ${{ secrets.GH_TOKEN }}
+          folder: ./public # Remplacez ce chemin par celui où se trouve votre page HTML à déployer
+          branch: gh-pages  # Branche sur laquelle déployer (gh-pages est la branche standard pour GitHub Pages)
+          commit-message: "Deploying to GitHub Pages"
